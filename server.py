@@ -35,14 +35,26 @@ class VPNServer:
 
         # Создание SSL контекста с самоподписанным сертификатом
         self.context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+        # Генерация самоподписанного SSL сертификата
+        self.context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
         self.context.check_hostname = False
         self.context.verify_mode = ssl.CERT_NONE
 
-        # Генерация сертификата на лету
+        # Генерируем и сохраняем во временные файлы
+        import tempfile
         cert_data, key_data = self.generate_self_signed_cert()
-        self.context.load_cert_chain(certdata=cert_data, keydata=key_data)
 
-        logging.info(f"Server initialized on port {self.port}")
+        with tempfile.NamedTemporaryFile(mode='wb', delete=False, suffix='.crt') as cert_file:
+            cert_file.write(cert_data)
+            cert_path = cert_file.name
+
+        with tempfile.NamedTemporaryFile(mode='wb', delete=False, suffix='.key') as key_file:
+            key_file.write(key_data)
+            key_path = key_file.name
+
+        self.context.load_cert_chain(cert_path, key_path)
+
+        # Не удаляем файлы сразу - они нужны на время работы сервера
 
     def generate_self_signed_cert(self):
         """Генерация самоподписанного SSL сертификата"""
