@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kildear VPN - Главная</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Kildear VPN</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="active">Главная</a></li>
+                    <li><a href="#features">Возможности</a></li>
+                    <li><a href="#pricing">Тарифы</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="{{ url_for('login') }}" class="btn-login">Панель управления</a></li>
+                </ul>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1>Ваш приватный VPN сервер</h1>
+                    <p class="hero-subtitle">Безопасное, быстрое и надежное соединение. Полный контроль над вашими данными.</p>
+                    <div class="hero-buttons">
+                        <a href="{{ url_for('login') }}" class="btn btn-primary btn-large">
+                            <i class="fas fa-rocket"></i> Начать использовать
+                        </a>
+                        <a href="#features" class="btn btn-outline btn-large">
+                            <i class="fas fa-info-circle"></i> Подробнее
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-server"></i>
+                            <div>
+                                <h3>24/7</h3>
+                                <p>Работа серверов</p>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-bolt"></i>
+                            <div>
+                                <h3>1 Гбит/с</h3>
+                                <p>Скорость соединения</p>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-user-shield"></i>
+                            <div>
+                                <h3>256-bit</h3>
+                                <p>Шифрование</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="vpn-animation">
+                        <div class="server-node">
+                            <i class="fas fa-server"></i>
+                            <span>Ваш сервер</span>
+                        </div>
+                        <div class="connection-line">
+                            <div class="data-packet"></div>
+                            <div class="data-packet delayed"></div>
+                        </div>
+                        <div class="client-node">
+                            <i class="fas fa-laptop"></i>
+                            <span>Ваше устройство</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features-section">
+            <div class="container">
+                <h2 class="section-title">Почему выбирают наш VPN</h2>
+                <p class="section-subtitle">Мы предоставляем полный контроль и максимальную безопасность</p>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3>Полная приватность</h3>
+                        <p>Ваши данные остаются только вашими. Мы не ведем логи активностей.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h3>Высокая скорость</h3>
+                        <p>Оптимизированные серверы обеспечивают максимальную скорость соединения.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>Собственный сервер</h3>
+                        <p>Разверните VPN на своем сервере и получите полный контроль.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Открытый код</h3>
+                        <p>Полный доступ к исходному коду для кастомизации и аудита.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Multi-платформа</h3>
+                        <p>Работает на Windows, macOS, Linux, iOS и Android.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>Поддержка</h3>
+                        <p>Помощь в настройке и круглосуточная техническая поддержка.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How it Works -->
+        <section class="how-section">
+            <div class="container">
+                <h2 class="section-title">Как это работает</h2>
+
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Развертывание</h3>
+                            <p>Установите наш VPN сервер на свой VPS или выделенный сервер</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Настройка</h3>
+                            <p>Настройте параметры через веб-интерфейс администратора</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Подключение</h3>
+                            <p>Подключите свои устройства с помощью клиентов</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Управление</h3>
+                            <p>Контролируйте подключения и статистику в реальном времени</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Готовы начать?</h2>
+                    <p>Создайте свой приватный VPN сервер прямо сейчас</p>
+                    <a href="{{ url_for('login') }}" class="btn btn-primary btn-xlarge">
+                        <i class="fas fa-play-circle"></i> Начать бесплатно
+                    </a>
+                    <p class="cta-note">14 дней пробного периода • Без привязки карты</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kildear VPN</h3>
+                    <p>Решение для безопасного и приватного интернет-соединения.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Продукт</h4>
+                    <ul>
+                        <li><a href="#features">Возможности</a></li>
+                        <li><a href="#pricing">Тарифы</a></li>
+                        <li><a href="#">Документация</a></li>
+                        <li><a href="#">API</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Поддержка</h4>
+                    <ul>
+                        <li><a href="#">База знаний</a></li>
+                        <li><a href="#">Форум</a></li>
+                        <li><a href="#">Контакты</a></li>
+                        <li><a href="#">Статус системы</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Компания</h4>
+                    <ul>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#">Блог</a></li>
+                        <li><a href="#">Политика приватности</a></li>
+                        <li><a href="#">Условия использования</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Kildear VPN. Все права защищены.</p>
+                <p>v1.0.0</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') return;
+
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#home') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // Update year in footer
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.footer-bottom p:first-child').innerHTML =
+                `&copy; ${new Date().getFullYear()} Kildear VPN. Все права защищены.`;
+        });
+    </script>
+</body>
+</html>

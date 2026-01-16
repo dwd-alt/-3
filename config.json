@@ -1,0 +1,18 @@
+{
+  "web": {
+    "host": "0.0.0.0",
+    "port": 5000,
+    "debug": false,
+    "secret_key": "your-secret-key-here"
+  },
+  "vpn": {
+    "host": "0.0.0.0",
+    "port": 443,
+    "max_clients": 100,
+    "timeout": 30
+  },
+  "admin": {
+    "username": "admin",
+    "password": "secure_password_123"
+  }
+}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kildear VPN Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">Kildear VPN</div>
+        <div class="nav-user">
+            Привет, {{ username }}!
+            <a href="{{ url_for('logout') }}" class="btn-logout">Выйти</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="sidebar">
+            <ul class="nav-menu">
+                <li class="active"><a href="#dashboard">Главная</a></li>
+                <li><a href="#clients">Клиенты</a></li>
+                {% if is_admin %}
+                <li><a href="#users">Пользователи</a></li>
+                <li><a href="#settings">Настройки</a></li>
+                {% endif %}
+                <li><a href="#logs">Логи</a></li>
+            </ul>
+
+            <div class="server-status">
+                <h3>Статус сервера</h3>
+                <div class="status-indicator" id="serverStatus">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Загрузка...</span>
+                </div>
+                <div class="status-controls">
+                    <button id="startBtn" class="btn btn-success">Запустить VPN</button>
+                    <button id="stopBtn" class="btn btn-danger">Остановить VPN</button>
+                </div>
+            </div>
+        </div>
+
+        <main class="main-content">
+            <div id="dashboard" class="content-section active">
+                <h2>Обзор системы</h2>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Текущие подключения</h3>
+                        <div class="stat-value" id="currentConnections">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Всего подключений</h3>
+                        <div class="stat-value" id="totalConnections">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Отправлено данных</h3>
+                        <div class="stat-value" id="uploadData">0 MB</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Получено данных</h3>
+                        <div class="stat-value" id="downloadData">0 MB</div>
+                    </div>
+                </div>
+
+                <div class="charts">
+                    <div class="chart-container">
+                        <canvas id="connectionsChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="trafficChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="recent-activity">
+                    <h3>Активные пользователи</h3>
+                    <div id="activeUsersList"></div>
+                </div>
+            </div>
+
+            <div id="clients" class="content-section">
+                <h2>Управление клиентами</h2>
+                <div class="table-container">
+                    <table id="clientsTable">
+                        <thead>
+                            <tr>
+                                <th>Пользователь</th>
+                                <th>IP адрес</th>
+                                <th>Подключен</th>
+                                <th>Отправлено</th>
+                                <th>Получено</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clientsBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            {% if is_admin %}
+            <div id="users" class="content-section">
+                <h2>Управление пользователями</h2>
+
+                <div class="add-user-form">
+                    <h3>Добавить пользователя</h3>
+                    <div class="form-row">
+                        <input type="text" id="newUsername" placeholder="Логин">
+                        <input type="password" id="newPassword" placeholder="Пароль">
+                        <button id="addUserBtn" class="btn btn-primary">Добавить</button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table id="usersTable">
+                        <thead>
+                            <tr>
+                                <th>Пользователь</th>
+                                <th>Создан</th>
+                                <th>Последнее подключение</th>
+                                <th>Статус</th>
+                                <th>Трафик</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="settings" class="content-section">
+                <h2>Настройки сервера</h2>
+                <div class="settings-form">
+                    <div class="form-group">
+                        <label>Адрес сервера</label>
+                        <input type="text" value="vpn.kildear.com" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Порт VPN</label>
+                        <input type="number" value="443" id="vpnPort">
+                    </div>
+                    <div class="form-group">
+                        <label>Максимум клиентов</label>
+                        <input type="number" value="100" id="maxClients">
+                    </div>
+                    <button id="saveSettings" class="btn btn-primary">Сохранить настройки</button>
+                </div>
+            </div>
+            {% endif %}
+
+            <div id="logs" class="content-section">
+                <h2>Логи сервера</h2>
+                <div class="logs-container">
+                    <pre id="serverLogs">Загрузка логов...</pre>
+                </div>
+                <button id="refreshLogs" class="btn btn-secondary">Обновить логи</button>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

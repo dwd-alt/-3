@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kildear VPN - Клиенты</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/clients.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="clients-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="{{ url_for('index') }}" class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Kildear VPN</span>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="{{ url_for('index') }}">Главная</a></li>
+                    <li><a href="#download">Скачать</a></li>
+                    <li><a href="#guides">Инструкции</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="{{ url_for('login') }}" class="btn-login">Панель управления</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="clients-main">
+        <!-- Hero Section -->
+        <section class="clients-hero">
+            <div class="container">
+                <h1>Клиенты для всех платформ</h1>
+                <p class="hero-subtitle">Выберите клиент для вашей операционной системы</p>
+            </div>
+        </section>
+
+        <!-- Clients Grid -->
+        <section class="clients-grid-section">
+            <div class="container">
+                <div class="platform-selector">
+                    <button class="platform-tab active" data-platform="all">
+                        <i class="fas fa-th-large"></i> Все платформы
+                    </button>
+                    <button class="platform-tab" data-platform="windows">
+                        <i class="fab fa-windows"></i> Windows
+                    </button>
+                    <button class="platform-tab" data-platform="macos">
+                        <i class="fab fa-apple"></i> macOS
+                    </button>
+                    <button class="platform-tab" data-platform="linux">
+                        <i class="fab fa-linux"></i> Linux
+                    </button>
+                    <button class="platform-tab" data-platform="android">
+                        <i class="fab fa-android"></i> Android
+                    </button>
+                    <button class="platform-tab" data-platform="ios">
+                        <i class="fab fa-app-store-ios"></i> iOS
+                    </button>
+                </div>
+
+                <div class="clients-container">
+                    <!-- Windows Client -->
+                    <div class="client-card" data-platform="windows">
+                        <div class="client-header">
+                            <div class="platform-icon">
+                                <i class="fab fa-windows"></i>
+                            </div>
+                            <div class="client-info">
+                                <h3>Windows Client</h3>
+                                <p class="version">Версия 1.2.0</p>
+                            </div>
+                        </div>
+
+                        <div class="client-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Автозапуск с системой</li>
+                                <li><i class="fas fa-check"></i> Kill Switch</li>
+                                <li><i class="fas fa-check"></i> Автовыбор сервера</li>
+                                <li><i class="fas fa-check"></i> Минималистичный интерфейс</li>
+                            </ul>
+                        </div>
+
+                        <div class="client-download">
+                            <div class="system-requirements">
+                                <p><strong>Требования:</strong> Windows 10/11 (x64)</p>
+                            </div>
+                            <div class="download-buttons">
+                                <a href="#" class="btn btn-primary">
+                                    <i class="fas fa-download"></i> Скачать EXE
+                                </a>
+                                <a href="#" class="btn btn-outline">
+                                    <i class="fas fa-code"></i> Исходный код
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- macOS Client -->
+                    <div class="client-card" data-platform="macos">
+                        <div class="client-header">
+                            <div class="platform-icon">
+                                <i class="fab fa-apple"></i>
+                            </div>
+                            <div class="client-info">
+                                <h3>macOS Client</h3>
+                                <p class="version">Версия 1.1.5</p>
+                            </div>
+                        </div>
+
+                        <div class="client-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Нативный интерфейс</li>
+                                <li><i class="fas fa-check"></i> Интеграция с меню</li>
+                                <li><i class="fas fa-check"></i> Защита от утечек DNS</li>
+                                <li><i class="fas fa-check"></i> Поддержка Touch ID</li>
+                            </ul>
+                        </div>
+
+                        <div class="client-download">
+                            <div class="system-requirements">
+                                <p><strong>Требования:</strong> macOS 11+ (Apple Silicon/Intel)</p>
+                            </div>
+                            <div class="download-buttons">
+                                <a href="#" class="btn btn-primary">
+                                    <i class="fas fa-download"></i> Скачать DMG
+                                </a>
+                                <a href="#" class="btn btn-outline">
+                                    <i class="fas fa-app-store"></i> App Store
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Linux Client -->
+                    <div class="client-card" data-platform="linux">
+                        <div class="client-header">
+                            <div class="platform-icon">
+                                <i class="fab fa-linux"></i>
+                            </div>
+                            <div class="client-info">
+                                <h3>Linux Client</h3>
+                                <p class="version">Версия 1.3.2</p>
+                            </div>
+                        </div>
+
+                        <div class="client-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> CLI и GUI интерфейсы</li>
+                                <li><i class="fas fa-check"></i> Поддержка systemd</li>
+                                <li><i class="fas fa-check"></i> Автоматические обновления</li>
+                                <li><i class="fas fa-check"></i> Поддержка всех дистрибутивов</li>
+                            </ul>
+                        </div>
+
+                        <div class="client-download">
+                            <div class="system-requirements">
+                                <p><strong>Пакеты:</strong> DEB, RPM, AppImage, Snap</p>
+                            </div>
+                            <div class="download-buttons">
+                                <div class="package-selector">
+                                    <select id="linuxPackage">
+                                        <option value="deb">DEB (Ubuntu/Debian)</option>
+                                        <option value="rpm">RPM (Fedora/RHEL)</option>
+                                        <option value="appimage">AppImage</option>
+                                        <option value="snap">Snap</option>
+                                    </select>
+                                </div>
+                                <a href="#" class="btn btn-primary" id="downloadLinux">
+                                    <i class="fas fa-download"></i> Скачать
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Android Client -->
+                    <div class="client-card" data-platform="android">
+                        <div class="client-header">
+                            <div class="platform-icon">
+                                <i class="fab fa-android"></i>
+                            </div>
+                            <div class="client-info">
+                                <h3>Android Client</h3>
+                                <p class="version">Версия 2.0.1</p>
+                            </div>
+                        </div>
+
+                        <div class="client-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Always-on VPN</li>
+                                <li><i class="fas fa-check"></i> Split tunneling</li>
+                                <li><i class="fas fa-check"></i> Защита от утечек</li>
+                                <li><i class="fas fa-check"></i> Автоматическое переподключение</li>
+                            </ul>
+                        </div>
+
+                        <div class="client-download">
+                            <div class="system-requirements">
+                                <p><strong>Требования:</strong> Android 8.0+</p>
+                            </div>
+                            <div class="download-buttons">
+                                <a href="#" class="btn btn-primary">
+                                    <i class="fab fa-google-play"></i> Google Play
+                                </a>
+                                <a href="#" class="btn btn-outline">
+                                    <i class="fas fa-download"></i> APK файл
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- iOS Client -->
+                    <div class="client-card" data-platform="ios">
+                        <div class="client-header">
+                            <div class="platform-icon">
+                                <i class="fab fa-app-store-ios"></i>
+                            </div>
+                            <div class="client-info">
+                                <h3>iOS Client</h3>
+                                <p class="version">Версия 1.5.0</p>
+                            </div>
+                        </div>
+
+                        <div class="client-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Оптимизация для iOS</li>
+                                <li><i class="fas fa-check"></i> Поддержка Face ID/Touch ID</li>
+                                <li><i class="fas fa-check"></i> Автоподключение к Wi-Fi</li>
+                                <li><i class="fas fa-check"></i> Минимальный расход батареи</li>
+                            </ul>
+                        </div>
+
+                        <div class="client-download">
+                            <div class="system-requirements">
+                                <p><strong>Требования:</strong> iOS 14.0+</p>
+                            </div>
+                            <div class="download-buttons">
+                                <a href="#" class="btn btn-primary">
+                                    <i class="fab fa-app-store"></i> App Store
+                                </a>
+                                <a href="#" class="btn btn-outline">
+                                    <i class="fas fa-mobile-alt"></i> TestFlight
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Manual Configuration -->
+                    <div class="client-card manual-config">
+                        <div class="client-header">
+                            <div class="platform-icon">
+                                <i class="fas fa-terminal"></i>
+                            </div>
+                            <div class="client-info">
+                                <h3>Ручная настройка</h3>
+                                <p class="version">Для продвинутых пользователей</p>
+                            </div>
+                        </div>
+
+                        <div class="client-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> OpenVPN конфигурация</li>
+                                <li><i class="fas fa-check"></i> WireGuard конфигурация</li>
+                                <li><i class="fas fa-check"></i> IKEv2/IPSec</li>
+                                <li><i class="fas fa-check"></i> Любая платформа</li>
+                            </ul>
+                        </div>
+
+                        <div class="client-download">
+                            <div class="config-buttons">
+                                <button class="btn btn-outline" id="showOpenVPN">
+                                    <i class="fas fa-file-code"></i> OpenVPN
+                                </button>
+                                <button class="btn btn-outline" id="showWireGuard">
+                                    <i class="fas fa-shield-alt"></i> WireGuard
+                                </button>
+                                <button class="btn btn-outline" id="showIKEv2">
+                                    <i class="fas fa-lock"></i> IKEv2
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Configuration Guides -->
+        <section id="guides" class="guides-section">
+            <div class="container">
+                <h2 class="section-title">Инструкции по настройке</h2>
+
+                <div class="guides-container">
+                    <div class="guide-card">
+                        <div class="guide-header">
+                            <i class="fab fa-windows"></i>
+                            <h3>Windows</h3>
+                        </div>
+                        <div class="guide-steps">
+                            <ol>
+                                <li>Скачайте и установите клиент</li>
+                                <li>Запустите программу</li>
+                                <li>Введите адрес сервера и учетные данные</li>
+                                <li>Нажмите "Подключиться"</li>
+                            </ol>
+                        </div>
+                        <a href="#" class="guide-link">Подробная инструкция →</a>
+                    </div>
+
+                    <div class="guide-card">
+                        <div class="guide-header">
+                            <i class="fab fa-apple"></i>
+                            <h3>macOS</h3>
+                        </div>
+                        <div class="guide-steps">
+                            <ol>
+                                <li>Установите клиент из DMG</li>
+                                <li>Перетащите в Applications</li>
+                                <li>Настройте в системных настройках</li>
+                                <li>Активируйте в меню</li>
+                            </ol>
+                        </div>
+                        <a href="#" class="guide-link">Подробная инструкция →</a>
+                    </div>
+
+                    <div class="guide-card">
+                        <div class="guide-header">
+                            <i class="fab fa-android"></i>
+                            <h3>Android</h3>
+                        </div>
+                        <div class="guide-steps">
+                            <ol>
+                                <li>Установите приложение из Play Store</li>
+                                <li>Откройте приложение</li>
+                                <li>Добавьте конфигурацию сервера</li>
+                                <li>Разрешите VPN соединение</li>
+                            </ol>
+                        </div>
+                        <a href="#" class="guide-link">Подробная инструкция →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq-section">
+            <div class="container">
+                <h2 class="section-title">Часто задаваемые вопросы</h2>
+
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Какой клиент лучше выбрать?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Для большинства пользователей рекомендуется использовать официальный клиент для вашей операционной системы. Для Windows и macOS выбирайте нативные клиенты, для Linux - CLI версию если вы опытный пользователь.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Нужно ли платить за клиенты?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Все клиенты распространяются абсолютно бесплатно и имеют открытый исходный код. Платить нужно только за серверную инфраструктуру если вы используете наши хостинговые решения.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Как настроить несколько устройств?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Вы можете создать несколько пользователей в панели управления и использовать разные учетные записи для каждого устройства. Также поддерживается одновременное подключение с одного аккаунта с нескольких устройств.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Безопасны ли клиенты?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Да, все клиенты проходят аудит безопасности, имеют открытый исходный код и используют современные протоколы шифрования. Мы также регулярно выпускаем обновления безопасности.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="clients-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Поддержка</h3>
+                    <p>Если у вас возникли проблемы с клиентами, обратитесь в нашу службу поддержки.</p>
+                    <a href="mailto:support@kildear.com" class="support-email">
+                        <i class="fas fa-envelope"></i> support@kildear.com
+                    </a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Ресурсы</h3>
+                    <ul>
+                        <li><a href="#">Документация</a></li>
+                        <li><a href="#">Форум сообщества</a></li>
+                        <li><a href="#">Исходный код</a></li>
+                        <li><a href="#">Блог разработчиков</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Kildear VPN. Все клиенты распространяются под лицензией MIT.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Configuration Modal -->
+    <div id="configModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Конфигурация</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <pre id="configContent">Выберите тип конфигурации</pre>
+                <button class="btn btn-primary" id="copyConfig">
+                    <i class="fas fa-copy"></i> Копировать конфигурацию
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Platform filtering
+        document.querySelectorAll('.platform-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Update active tab
+                document.querySelectorAll('.platform-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+
+                const platform = this.dataset.platform;
+                const clientCards = document.querySelectorAll('.client-card');
+
+                clientCards.forEach(card => {
+                    if (platform === 'all') {
+                        card.style.display = 'block';
+                    } else if (card.dataset.platform === platform || card.classList.contains('manual-config')) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Linux package selector
+        const linuxPackageSelect = document.getElementById('linuxPackage');
+        const downloadLinuxBtn = document.getElementById('downloadLinux');
+
+        linuxPackageSelect.addEventListener('change', function() {
+            const packageType = this.value;
+            const packageNames = {
+                deb: 'kildear-vpn_1.3.2_amd64.deb',
+                rpm: 'kildear-vpn-1.3.2-1.x86_64.rpm',
+                appimage: 'KildearVPN-1.3.2-x86_64.AppImage',
+                snap: 'kildear-vpn'
+            };
+
+            downloadLinuxBtn.innerHTML = `<i class="fas fa-download"></i> Скачать ${packageNames[packageType]}`;
+        });
+
+        // Configuration modals
+        const modal = document.getElementById('configModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const configContent = document.getElementById('configContent');
+        const copyConfigBtn = document.getElementById('copyConfig');
+
+        const configurations = {
+            openvpn: `client
+dev tun
+proto tcp
+remote vpn.kildear.com 443
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+remote-cert-tls server
+cipher AES-256-CBC
+auth SHA512
+verb 3
+<ca>
+-----BEGIN CERTIFICATE-----
+MIIDXTCCAkWgAwIBAgIJAKL5qk...
+-----END CERTIFICATE-----
+</ca>
+<cert>
+-----BEGIN CERTIFICATE-----
+MIIDRzCCAi+gAwIBAgIRAIP5...
+-----END CERTIFICATE-----
+</cert>
+<key>
+-----BEGIN PRIVATE KEY-----
+MIIEvQIBADANBgkqhkiG9w0B...
+-----END PRIVATE KEY-----
+</key>`,
+
+            wireguard: `[Interface]
+PrivateKey = YOUR_PRIVATE_KEY_HERE
+Address = 10.8.0.2/24
+DNS = 1.1.1.1, 8.8.8.8
+
+[Peer]
+PublicKey = SERVER_PUBLIC_KEY_HERE
+AllowedIPs = 0.0.0.0/0
+Endpoint = vpn.kildear.com:51820
+PersistentKeepalive = 25`,
+
+            ikev2: `Server: vpn.kildear.com
+Username: YOUR_USERNAME
+Password: YOUR_PASSWORD
+Type: IKEv2
+Authentication: MSCHAPv2
+Certificate: auto
+Use IPsec: yes`
+        };
+
+        // Show configuration modals
+        document.getElementById('showOpenVPN').addEventListener('click', () => showConfig('OpenVPN', configurations.openvpn));
+        document.getElementById('showWireGuard').addEventListener('click', () => showConfig('WireGuard', configurations.wireguard));
+        document.getElementById('showIKEv2').addEventListener('click', () => showConfig('IKEv2/IPSec', configurations.ikev2));
+
+        function showConfig(title, config) {
+            modalTitle.textContent = title + ' Конфигурация';
+            configContent.textContent = config;
+            modal.style.display = 'block';
+        }
+
+        // Close modal
+        document.querySelector('.modal-close').addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        // Copy config to clipboard
+        copyConfigBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(configContent.textContent)
+                .then(() => {
+                    const originalText = copyConfigBtn.innerHTML;
+                    copyConfigBtn.innerHTML = '<i class="fas fa-check"></i> Скопировано!';
+                    setTimeout(() => {
+                        copyConfigBtn.innerHTML = originalText;
+                    }, 2000);
+                });
+        });
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const icon = this.querySelector('i');
+
+                if (answer.style.maxHeight) {
+                    answer.style.maxHeight = null;
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // Initialize FAQ heights
+        document.querySelectorAll('.faq-answer').forEach(answer => {
+            answer.style.maxHeight = null;
+        });
+    </script>
+</body>
+</html>
